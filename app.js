@@ -1,25 +1,23 @@
-const role = 'manager';
+const bmwX3Price = 100000;
+const fordFocusPrice = 10000;
+const budget = 20000;
 
-if (role === 'manager') {
-  console.log('Менеджер');
-} else if (role === 'Admin') {
-  console.log('Админ');
-} else if (role === 'ceo') {
-  console.log('CEO');
+let message;
+
+if (budget > bmwX3Price) {
+  message = 'BMW';
+} else if (budget > fordFocusPrice) {
+  message = 'Ford';
 } else {
-  console.log('Мы тебя не знаем!');
+  message = 'Велосипед';
 }
 
-switch (role) {
-  case 'manager':
-    console.log('Менеджер');
-    break;
-  case 'admin':
-    console.log('Админ');
-    break;
-  case 'ceo':
-    console.log('CEO');
-    break;
-  default:
-    console.log('Мы тебя не знаем!');
+10 > 0 ? console.log('больше 0') : console.log('не больше');
+// Это равносильно между собой
+if (10 > 0) {
+  console.log('больше 0');
+} else {
+  console.log('не больше');
 }
+
+console.log(` я хочу купить ${message}`);
