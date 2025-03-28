@@ -1,32 +1,18 @@
-const bmwX3Price = 100000;
-const fordFocusPrice = 10000;
-const budget = 20000;
+const isAdmin = true;
+const canWrite = true;
 
-// let message;
+console.log(`Системный файл ${isAdmin && canWrite}`);
+console.log(`Инвертируем права админа ${!isAdmin}`);
 
-// if (budget > bmwX3Price) {
-//   message = 'BMW';
-// } else if (budget > fordFocusPrice) {
-//   message = 'Ford';
-// } else {
-//   message = 'Велосипед';
-// }
+const isEdited = true;
+const isSuperAdmin = true;
 
-// 10 > 0 ? console.log('больше 0') : console.log('не больше');
-// // Это равносильно между собой
-// if (10 > 0) {
-//   console.log('больше 0');
-// } else {
-//   console.log('не больше');
-// }
-// // также укороченный вариант
-// const str = 10 > 0 ? 'больше 0' : 'не больше';
-// console.log(str);
+console.log(
+  ` Системный файл с редактированием ${
+    isAdmin && canWrite && (!isEdited || isSuperAdmin)
+  }`
+);
 
-// // укороченный вариант написания верхней записи
-// console.log(` я хочу купить ${budget > bmwX3Price ? 'BMW' : 'Велосипед'}`);
-
-let message =
-  budget > bmwX3Price ? 'BMW' : budget > fordFocusPrice ? 'Ford' : 'Велосипед';
-
-console.log(`Я хочу купить ${message}`);
+let a = 7;
+if (a === -8 || a === 22) {
+}
