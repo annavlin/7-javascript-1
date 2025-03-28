@@ -1,18 +1,9 @@
-const isAdmin = true;
-const canWrite = true;
+const balance = 100;
+const bonusBalance = 1000;
+const isBanned = false;
+const isSelling = true;
+const isExist = false;
 
-console.log(`Системный файл ${isAdmin && canWrite}`);
-console.log(`Инвертируем права админа ${!isAdmin}`);
-
-const isEdited = true;
-const isSuperAdmin = true;
-
-console.log(
-  ` Системный файл с редактированием ${
-    isAdmin && canWrite && (!isEdited || isSuperAdmin)
-  }`
-);
-
-let a = 7;
-if (a === -8 || a === 22) {
-}
+const canBuy =
+  (balance > 1000 || bonusBalance > 100) && !isBanned && isSelling && !isExist;
+console.log(`Могу купить игру: ${canBuy ? 'Да' : 'Нет'}`);
