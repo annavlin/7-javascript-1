@@ -1,126 +1,102 @@
-// введение в функции
+// Массивы
+const users = ['Аня', 'Вика', 'Катя'];
+console.log(users);
+users[2] = 'Кристина';
+console.log(users);
+// users[4] = 'Никита';
+// console.log(users);
 
-function logName(name, surname) {
-  console.log(`Мое имя ${name} ${surname}`);
+const arrLenght = users.push('Никита');
+console.log(users);
+console.log(arrLenght);
+
+users.unshift('Вася'); //добавляет в начало, смещая другие
+console.log(users);
+
+users.pop(); //удаляет массив
+console.log(users);
+
+const el2 = users.shift();
+console.log(el2);
+console.log(users);
+
+// slice метод (отрезает кусок, выборка от того числа, которое мы указали и если есть второе то до второго числа-второй элемент не включается)
+
+const roles = ['user', 'admin', 'manager', 'superuser'];
+
+const res1 = roles.slice(2, 3);
+console.log(roles);
+console.log(res1);
+
+const res2 = roles.slice(0, 2);
+console.log(res2);
+
+const res3 = roles.slice(-1);
+console.log(res3);
+
+const res4 = roles.slice(1, -1); //при отрицательном индексе считаем с конца
+console.log(res4);
+
+//splice
+
+const res5 = roles.splice(2);
+console.log(res5);
+console.log(roles);
+
+//reverse
+
+const res8 = roles.reverse();
+console.log(res8);
+
+//concat (добавляется к старому массиву новый)
+
+const newRoles = ['sisadmin', 'developer'];
+const res9 = roles.concat(newRoles);
+console.log(res9);
+
+/* 
+Дан список задач
+const tasks = ['Задача 1'];
+Сделать функции:
+- Добавление задачи в конец
+- Удаление задачи по названию
+- Перенос задаси в начало списка по названию 
+Всегда меняем исходный массив
+ */
+const tasks = ['Задача 1', 'Задача 2'];
+
+function addToEnd(task) {
+  tasks.push(task);
 }
+addToEnd('Задача 3');
+console.log(tasks);
 
-logName('Антон', 'Ларичев');
-
-function countDepositSum(depositinUSD, month, rate) {
-  return (sum = depositinUSD * (1 + rate / 12) ** month);
+function deleteTaskByName(taskName) {
+  console.log(tasks.indexOf(taskName));
+  const index = tasks.indexOf(taskName);
+  if (index >= 0) {
+    tasks.splice(index, 1);
+  }
 }
+deleteTaskByName('Задача 2');
+console.log(tasks);
 
-const example1 = countDepositSum(1000, 24, 0.12);
-console.log(example1);
-
-// анонимные функции
-
-function powerOfTwo(num) {
-  return num * num;
+function moveToStart(taskName) {
+  const index = tasks.indexOf(taskName);
+  deleteTaskByName(taskName);
+  if (index >= 0) {
+    tasks.unshift(taskName);
+  }
 }
-console.log(powerOfTwo(5));
+moveToStart('Задача 3');
+console.log(tasks);
 
-const poft1 = function (num) {
-  return num * num;
-};
-console.log(poft1(6));
-
-// стрелочные функции
-
-function powerOfTwo(num) {
-  return num * num;
-}
-console.log(powerOfTwo(5));
-
-// const poft2 = (num) => num * num;
-const poft2 = (num) => {
-  console.log(num);
-  return num * num;
-};
-console.log(poft2(6));
-
-// Упражнение (сделвать из обычной функции стрелочную)
+let res = 1;
 function toPower(num, power) {
-  const res = num ** power;
+  res = num ** power;
   return res;
 }
 
 console.log(toPower(2, 3));
-
-const toPowerArrow = (num, power) => num ** power;
-console.log(toPowerArrow(2, 3));
-
-// функции в функциях\
-const KG_In_USD = 7;
-const Km_In_USD = 5;
-
-function calculateW(present) {
-  return present * KG_In_USD;
-}
-
-function calculateKm(distance) {
-  return distance * Km_In_USD;
-}
-
-function getExchangePrice(present1, present2, distance) {
-  const price1 = calculateW(present1);
-  const price2 = calculateW(present2);
-  const distancePrice = calculateKm(distance);
-  return price1 + price2 + distancePrice;
-}
-
-console.log(getExchangePrice(1, 2, 10));
-
-// !!!Упражнение Кредит на MacBook!!!
-
-// Пользователь:
-// - Возраст
-// - Наличие работы
-// - Деньги
-// Нужно проверить, может ли он купить новый макбук за 2000$?
-// Он может брать не только свои деньги, но и взять кредит. Ему дадут 500$, только если ему больше 24х лет и он имеет работу, 100$ если ему просто больше 24х лет и 0 в ином случае. Напишите функцию, которая принимает данные пользователя и товара и возвращает true или false;
-
-// const money = 1600;
-// const isWorking = true;
-// const age = 25;
-
-function canBuyMacbook(age, isJob, money) {
-  const priceMakBook = 2000;
-
-  const credit500 = age > 24 && isJob === true;
-  const credit100 = age > 24;
-  if (money >= priceMakBook) {
-    return true;
-  }
-
-  if (credit500) {
-    return money + 500 >= priceMakBook;
-    // через переменную
-    // const canBuy = money + 500 >= priceMakBook;
-    // return canBuy
-  }
-  if (credit100) {
-    return money + 100 >= priceMakBook;
-  }
-  return false;
-}
-
-console.log(canBuyMacbook(25, true, 1500));
-
-// Через свич
-function computerCredit(age, hasJob = false) {
-  switch (true) {
-    case age > 24 && hasJob:
-      return 500;
-    case age > 24:
-      return 100;
-    default:
-      return 0;
-  }
-}
-
-function canBuy(productPrice, age, money, hasJob = false) {
-  const creditMoney = computerCredit(age, hasJob);
-  return productPrice <= money + creditMoney;
-}
-console.log(canBuy(2000, 25, 1500, true));
+res = 99;
+console.log(res);
