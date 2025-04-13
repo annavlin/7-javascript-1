@@ -12,3 +12,11 @@ const powerOfThree = power(3);
 console.log(powerOfThree(5));
 
 console.log(power(5)(4));
+
+function power(pow) {
+  return function (num) {
+    return num ** pow;
+  };
+}
+
+const power = (pow) => (num) => num ** power;
