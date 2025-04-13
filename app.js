@@ -1,16 +1,14 @@
-const score = [5, 10, 0, 15];
+const transactionInUSD = [10, -7, 50, -10, 100];
 
-for (const [i, el] of score.entries()) {
-  console.log(`Раунд: ${i + 1}: ${el}`);
+const transactionInRUB = [];
+for (const transaction of transactionInUSD) {
+  transactionInRUB.push(transaction * 60);
 }
+// console.log(transactionInRUB);
+// console.log(transactionInUSD);
 
-score.forEach(function (el, i) {
-  console.log(`Раунд: ${i + 1}: ${el}`);
-});
-
-score.forEach((el, i) => {
-  console.log(`Раунд: ${i + 1}: ${el}`);
-}); /* то же самое, но стрелочная функция */
-
-// (5, 0) => {...}
-// (10, 1) => {...}
+const transactionInRUB2 = transactionInUSD.map(
+  (transaction) => transaction * 60
+);
+console.log(transactionInRUB2);
+console.log(transactionInUSD);
