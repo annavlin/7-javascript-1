@@ -9,54 +9,49 @@ const operations = [1000, -700, 300, -500, 10000];
 */
 
 const operations = [1000, -700, 300, -500, 10000];
-const balance = 100;
+const startingBalance = 100;
 
-function calculateBalance(initBalance, listOperations) {
-  let total = initBalance;
-
-  for (let i = 0; i < listOperations.length; i++) {
-    total = total + listOperations[i];
+function getBalance(arrayOfOperations, initailBalance) {
+  let balance = initailBalance;
+  for (const element of arrayOfOperations) {
+    balance += element;
   }
-  console.log(total);
-  return total;
+  return balance;
 }
-calculateBalance(balance, operations);
 
-function minusBalance(initBalance, listOperations) {
-  let total = initBalance;
+console.log(getBalance(operations, startingBalance));
 
-  for (let i = 0; i < listOperations.length; i++) {
-    total = total + listOperations[i];
-    if (total < 0) {
-      return false;
+function checkOperation(arrayOfOperations, initailBalance) {
+  let balance = initailBalance;
+  let isOk = true;
+  for (const element of arrayOfOperations) {
+    balance += element;
+    if (balance < 0) {
+      isOk = false;
+      break;
+    }
+  }
+  return isOk;
+}
+console.log(checkOperation(operations, startingBalance));
+
+function avvarageOperations(arrayOfOperations) {
+  let positiveCount = 0;
+  let positiveSum = 0;
+  let negativeSum = 0;
+  let negativeCount = 0;
+  for (const element of arrayOfOperations) {
+    if (element < 0) {
+      positiveCount++;
+      positiveSum += element;
+    }
+    if (element > 0) {
+      negativeCount++;
+      negativeSum += element;
     }
   }
 
-  console.log(total);
-  return true;
+  return [positiveSum / positiveCount, negativeSum / negativeCount];
 }
-console.log(minusBalance(balance, operations));
 
-function middleBalance(listOperations) {
-  let earnSum = 0;
-  let expendSum = 0;
-  let earnCount = 0;
-  let expendCount = 0;
-
-  for (let i = 0; i < listOperations.length; i++) {
-    if (listOperations[i] < 0) {
-      expendCount = expendCount + 1;
-      expendSum = expendSum + listOperations[i];
-    }
-    if (listOperations[i] > 0) {
-      earnCount = earnCount + 1;
-      earnSum = earnSum + listOperations[i];
-    }
-  }
-
-  const middleExpend = expendSum / expendCount;
-  const middleEarn = earnSum / earnCount;
-
-  return [middleEarn, middleExpend];
-}
-console.log(middleBalance(operations));
+console.log(avvarageOperations(operations));
