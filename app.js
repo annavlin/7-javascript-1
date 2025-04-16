@@ -1,14 +1,20 @@
-const userName = 'Вася Пупкина';
-console.log(userName);
-console.log(userName[0] + userName[1]);
-console.log(userName.charAt(2));
+/* вытащить имя и фамилию в отдельные переменные */
+
+const userName = 'Вася aka Terminator Perdinator Пупкин';
+
+console.log(userName.slice(0, 4));
+console.log(userName.indexOf('Пуп'));
+console.log(userName.slice(31, 37));
 
 console.log(userName.length);
-console.log(userName.indexOf('уп'));
-console.log(userName.lastIndexOf('а'));
-console.log(userName.includes('уп'));
-console.log(userName.includes('упв'));
 
-console.log(userName.slice(5));
+// Еще вариант
+const fullUserName = 'Вася aka Terminator Perdinator Пупкин';
 
-// если использовать эмоджи - они занимают 2 места
+const shortUserName = fullUserName.slice(0, fullUserName.indexOf(' '));
+console.log(shortUserName);
+const userSurname = fullUserName.slice(
+  fullUserName.lastIndexOf(' ') + 1,
+  fullUserName.length
+);
+console.log(userSurname);
