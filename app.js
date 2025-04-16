@@ -1,13 +1,35 @@
-const prices = [
-  [2, 4],
-  [3, 4],
-  [10, 20],
-];
-const res = prices.flat();
-const res2 = prices.flatMap((el) => el.concat([1]));
+const users = ['Вася', 'Маша', 'Катя', 'Аня'];
+console.log(users);
+users.sort();
+console.log(users);
+//в данном случае sort сортирует массивы по алфавиту
 
-console.log(res);
-console.log(res2);
+const operations = [100, -300, -100, 50, 480];
+console.log(operations);
 
-/* flat- делает функцию плоской, вытаскивает все из скобок и обьединяет в одну, изначальная глубина () = 1, но можно савить свое значение глубины */
-/* flatMap делает те же функции, что и flat и map оп отдельности, только сначала выполняется map, затем flat */
+// < 0 - a, b -сохраняем порядок
+// > 0 - b,a- меняем порядок
+
+operations.sort((a, b) => {
+  if (a > b) {
+    return 1;
+  }
+  if (a < b) {
+    return -1;
+  }
+});
+console.log(operations);
+
+// дальше короткий вариант верхней записи
+operations.sort((a, b) => a - b);
+console.log(operations);
+
+operations.sort((a, b) => {
+  if (a < b) {
+    return 1;
+  }
+  if (a > b) {
+    return -1;
+  }
+});
+console.log(operations);
