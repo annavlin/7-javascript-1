@@ -1,10 +1,14 @@
-const arr = [1, 2, 3, 4, 5];
-console.log(new Array(1, 2, 3, 4, 5));
-const arr2 = new Array(5);
-console.log(arr2);
-arr2.fill(1, 0, 3); // тут результат будет [1, 1, 1, , ]
-arr2.fill(2, 3, 5); // тут добавляется, что с 3 по 5 элемеенты массива ставим 2б будет [1, 1, 1, 2, 2]
-console.log(arr2);
+const userName = 'Вася Пупкина';
+console.log(userName);
+console.log(userName[0] + userName[1]);
+console.log(userName.charAt(2));
 
-const arr3 = Array.from({ length: 5 }, (cur, i) => i + 1);
-console.log(arr3);
+console.log(userName.length);
+console.log(userName.indexOf('уп'));
+console.log(userName.lastIndexOf('а'));
+console.log(userName.includes('уп'));
+console.log(userName.includes('упв'));
+
+console.log(userName.slice(5));
+
+// если использовать эмоджи - они занимают 2 места
