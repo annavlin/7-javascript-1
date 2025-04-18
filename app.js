@@ -1,5 +1,20 @@
-/* замаскировать все, кроме последних 4х символов */
-/* *************8353 */
+const user = {
+  name: 'Вася',
+  surname: 'Пупкин',
+  age: 24,
+  skills: ['Программирование', 'Готовка'],
+  eduBasic: 'Школа 10',
+  eduPro: 'МФТИ',
+};
 
-const card = '2342834503458353';
-console.log(card.slice(-4).padStart(16, '*'));
+console.log(user);
+console.log(user.skills); /* этот варинат записи используем по максимуму */
+console.log(
+  user['skills'] /* этот вариант записи, только если надо произвети расчеты */
+); /* есть разница между этими двумя выражениями (в квадратных скпобках можно производить вычисления) */
+
+const level = 'Pro';
+console.log(user['edu' + level]);
+
+const res = prompt('Введите свойство');
+console.log(user[res]);
