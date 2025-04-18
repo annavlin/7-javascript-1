@@ -1,20 +1,11 @@
-const user = {
-  name: 'Вася',
-  surname: 'Пупкин',
-  age: 24,
-  skills: ['Программирование', 'Готовка'],
-  eduBasic: 'Школа 10',
-  eduPro: 'МФТИ',
-};
+/* отсортировать пользователей по возрасту */
 
-console.log(user);
-console.log(user.skills); /* этот варинат записи используем по максимуму */
-console.log(
-  user['skills'] /* этот вариант записи, только если надо произвети расчеты */
-); /* есть разница между этими двумя выражениями (в квадратных скпобках можно производить вычисления) */
+const users = [
+  { name: 'Вася', age: 30 },
+  { name: 'Катя', age: 18 },
+  { name: 'Аня', age: 40 },
+  { name: 'Петя', age: 25 },
+];
 
-const level = 'Pro';
-console.log(user['edu' + level]);
-
-const res = prompt('Введите свойство');
-console.log(user[res]);
+users.sort((a, b) => a.age - b.age);
+console.log(users);
