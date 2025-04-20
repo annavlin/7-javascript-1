@@ -10,7 +10,8 @@ const wallet = {
     return true;
   },
   decreaseBalance: function (sumInput, reasonInput) {
-    if (this.balance - sumInput < 0) {
+    if (this.balance < sumInput) {
+      console.log('Недостаточно баланса');
       return false;
     }
     this.balance -= sumInput;
@@ -22,10 +23,13 @@ const wallet = {
   },
 };
 
-console.log(wallet.increaseBalance(330, 'Шоппинг'));
+console.log(wallet.increaseBalance(1000, 'Зарплата'));
+console.log(wallet.operationsCount());
 
-console.log(wallet.decreaseBalance(110, 'Зоомагазин'));
-console.log(wallet.decreaseBalance(110, 'Зоомагазин'));
-console.log(wallet.decreaseBalance(110, 'Зоомагазин'));
+console.log(wallet.decreaseBalance(2000, 'Покупка ноутбука'));
+console.log(wallet.operationsCount());
+
+console.log(wallet.decreaseBalance(500, 'Покупка телефона'));
 
 console.log(wallet.operationsCount());
+console.log(wallet.balance);
