@@ -4,21 +4,22 @@
 const warehouse = {
   goods: [],
   findGoodById: function (id) {
-    const good = this.goods.find((good) => good.id === id);
-    return good;
+    return this.goods.find((g) => g.id == id);
   },
   addGood: function (good) {
+    const existedGood = this.findGoodById(good.id);
+    if (existedGood) {
+      console.log('Этот товар есть на складе');
+      return;
+    }
     this.goods.push(good);
   },
 
-  getWeightKg: function (id) {
-    const good = this.findGoodById(id);
-    console.log(good);
-    if (good?.weight?.kg) {
-      return good.weight.kg;
-    }
-
-    return 0;
+  getWeightKg: function () {
+    return this.goods.reduce(
+      (acc, el) => (acc += el.weight?.kg ? el.weight?.kg : 0),
+      0
+    );
   },
 };
 
@@ -52,10 +53,16 @@ const testt = {
 };
 
 warehouse.addGood(car);
+
 warehouse.addGood(chair);
 warehouse.addGood(paper);
 warehouse.addGood(testt);
 
 console.log(warehouse.goods);
-console.log(warehouse.findGoodById(2));
-console.log(warehouse.getWeightKg(4));
+let findedItem = warehouse.findGoodById(6);
+console.log(findedItem);
+findedItem = warehouse.findGoodById(1);
+console.log(findedItem);
+
+const w = warehouse.getWeightKg();
+console.log(w);
