@@ -1,20 +1,29 @@
+'use strict';
+
 const user = {
-  name: 'Anton',
-  id: 1,
-  roles: ['Admin'],
-};
+  firstName: 'Вася',
+  lastName: 'Пупкин',
+  age: 20,
+  getUserInfo: function () {
+    console.log(`${this.firstName} ${this.lastName}`);
 
-// const newUser = Object.assign({}, user);
-// user.name = 'NewUser';
-// console.log(user);
-// console.log(newUser);
-// в данном случае будет выводится NewUser     Anton
-
-const newUser2 = {
-  ...user /* это называется СПРЕД */,
+    const canDrink = () => {
+      if (this.age >= 18) {
+        console.log('Можно уже пить!');
+      } else {
+        console.log('Не может пить!');
+      }
+    };
+    canDrink();
+  },
+  getUserInfoArrow: () => {
+    console.log(`${this.firstName} ${this.lastName}`);
+  },
 };
-newUser2.name = 'NewUser';
-newUser2.roles.push('User');
-console.log(user);
-console.log(newUser2);
-// в данном случае это аналогичная запись вышесказанному
+user.getUserInfo();
+user.getUserInfoArrow(); //в этом случае будет выводится underfined underfined, потому что стрелочные функции не употребляются с this
+
+//но при этом если делать вторую функцию в обьекте, может показать ошибку, поэтому лучше ее заменить на стрелочную функцию
+
+//если нужно в обьекте использовать какое-то свойство и не потерять контекст- использовать обычную функцию, стрелочная функция будет показывать ошибку
+// если же внутри метода/обьекта нужно получить доступ this, при этом этот this должен быть в функции- здесь уже можно использоват стрелочную функцию, потому что контекст будет браться извне
