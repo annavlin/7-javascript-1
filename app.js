@@ -1,12 +1,16 @@
 'use strict';
-//IIFE
 
-function init() {
-  console.log('Start');
+function changeBalance() {
+  let balance = 0;
+  return function (sum) {
+    balance += sum;
+    console.log(`Баланс: ${balance}`);
+  };
 }
-init();
 
-(function () {
-  console.log('Start IIFO');
-  const a = 1;
-})(); //это своего рода "инкапсуляция", все, что происходит в пределах этой функции просиходит только в ней, но это уже устаревает
+//Замыкание - связь окружения функции и Change. Функция помнит, в каком контексте она была создана и может его использовать. Замыкание имеет более высокий приоритет с переменными родительскими
+
+const change = changeBalance();
+change(100);
+change(-50);
+change(200);
