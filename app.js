@@ -1,16 +1,25 @@
 'use strict';
 
-function changeBalance() {
-  let balance = 0;
-  return function (sum) {
-    balance += sum;
-    console.log(`Баланс: ${balance}`);
+/* 
+Сделать функцию пользователя, которая берет за основу userInfo и за счет замыкания создает новый обьект, с которым можно работать как user1().increse(100) */
+
+const userInfo = {
+  balance: 0,
+  operations: 0,
+  increse(sum) {
+    this.balance += sum;
+    this.operations++;
+  },
+};
+
+function user() {
+  const userObj = userInfo;
+  return function () {
+    return userObj;
   };
 }
 
-//Замыкание - связь окружения функции и Change. Функция помнит, в каком контексте она была создана и может его использовать. Замыкание имеет более высокий приоритет с переменными родительскими
-
-const change = changeBalance();
-change(100);
-change(-50);
-change(200);
+const user1 = user();
+user1().increse(100);
+user1().increse(100);
+console.log(user1());
