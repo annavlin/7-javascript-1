@@ -1,29 +1,19 @@
 'use strict';
+//обьекты состоят из 3х составляющих:
+// 1. let, var, const, function, arguments
+// 2. Scope chain
+// 3. this
 
-const user = {
-  firstName: 'Вася',
-  lastName: 'Пупкин',
-  age: 20,
-  getUserInfo: function () {
-    console.log(`${this.firstName} ${this.lastName}`);
+function sumNum(num1, num2) {
+  console.log(this);
+  console.log(arguments);
+  return num1 + num2;
+}
+console.log(sumNum(1, 4, 3, 7));
 
-    const canDrink = () => {
-      if (this.age >= 18) {
-        console.log('Можно уже пить!');
-      } else {
-        console.log('Не может пить!');
-      }
-    };
-    canDrink();
-  },
-  getUserInfoArrow: () => {
-    console.log(`${this.firstName} ${this.lastName}`);
-  },
+const sumNumArr = (num1, num2) => {
+  console.log(this);
+  console.log(arguments);
+  return num1 + num2;
 };
-user.getUserInfo();
-user.getUserInfoArrow(); //в этом случае будет выводится underfined underfined, потому что стрелочные функции не употребляются с this
-
-//но при этом если делать вторую функцию в обьекте, может показать ошибку, поэтому лучше ее заменить на стрелочную функцию
-
-//если нужно в обьекте использовать какое-то свойство и не потерять контекст- использовать обычную функцию, стрелочная функция будет показывать ошибку
-// если же внутри метода/обьекта нужно получить доступ this, при этом этот this должен быть в функции- здесь уже можно использоват стрелочную функцию, потому что контекст будет браться извне
+console.log(sumNumArr(1, 4, 3, 7));
