@@ -1,11 +1,21 @@
 'use strict';
-const panelText = document.querySelector('.panel').innerHTML;
-console.log(panelText); //выводится "I love this!"
-document.querySelector('.panel').innerText = 'New text'; //в консоле останется I love this!, но на экране выведется New text
-document.querySelector('.input').value = 'Text';
 
-// addEventListener('load', () => {
-//   console.log(document);
-// });
+document.querySelector('.button').addEventListener('click', function () {
+  const input = document.querySelector('.input').value;
+  if (!input) {
+    return;
+  }
+  document.querySelector('.panel').innerText = input;
+  document.querySelector('.input').value = '';
+});
 
-//начиная работу так или же можно перенести 'script src="./app.js"' в body в конец, оставив просто console.log(document);
+// записываем эту функцию но по -другому
+
+function changeClick() {
+  const input = document.querySelector('.input').value;
+  if (!input) {
+    return;
+  }
+  document.querySelector('.panel').innerText = input;
+  document.querySelector('.input').value = '';
+}
