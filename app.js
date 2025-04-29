@@ -1,25 +1,11 @@
 'use strict';
+const panelText = document.querySelector('.panel').innerHTML;
+console.log(panelText); //выводится "I love this!"
+document.querySelector('.panel').innerText = 'New text'; //в консоле останется I love this!, но на экране выведется New text
+document.querySelector('.input').value = 'Text';
 
-/* 
-Сделать функцию пользователя, которая берет за основу userInfo и за счет замыкания создает новый обьект, с которым можно работать как user1().increse(100) */
+// addEventListener('load', () => {
+//   console.log(document);
+// });
 
-const userInfo = {
-  balance: 0,
-  operations: 0,
-  increse(sum) {
-    this.balance += sum;
-    this.operations++;
-  },
-};
-
-function user() {
-  const userObj = userInfo;
-  return function () {
-    return userObj;
-  };
-}
-
-const user1 = user();
-user1().increse(100);
-user1().increse(100);
-console.log(user1());
+//начиная работу так или же можно перенести 'script src="./app.js"' в body в конец, оставив просто console.log(document);
