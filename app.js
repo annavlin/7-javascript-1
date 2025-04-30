@@ -1,17 +1,17 @@
 'use strict';
 
-document.querySelector('.button').addEventListener('click', function () {
-  const input = document.querySelector('.input').value;
-  if (!input) {
-    return;
-  }
-  document.querySelector('.panel').innerText = input;
-  document.querySelector('.input').value = '';
-});
+// document.querySelector('.button').addEventListener('click', function () {
+//   const input = document.querySelector('.input').value;
+//   if (!input) {
+//     return;
+//   }
+//   document.querySelector('.panel').innerText = input;
+//   document.querySelector('.input').value = '';
+// });
 
 // записываем эту функцию но по -другому
 
-function changeClick() {
+function submitForm() {
   const input = document.querySelector('.input').value;
   if (!input) {
     return;
@@ -19,3 +19,14 @@ function changeClick() {
   document.querySelector('.panel').innerText = input;
   document.querySelector('.input').value = '';
 }
+
+function inputChanged(e) {
+  if (e.code == 'Enter') {
+    submitForm();
+  }
+}
+// document.querySelector('.input').addEventListener('.keydown', (e) => {
+//   if (e.code == 'Enter') {
+//     submitForm();
+//   }
+// });
