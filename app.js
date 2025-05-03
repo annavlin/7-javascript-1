@@ -42,3 +42,16 @@ function inputChanged(e) {
 //     submitForm();
 //   }
 // });
+
+function getContentElement() {
+  const content1 = document.querySelectorAll('.one>span')[0].innerText;
+  console.log(content1);
+  const content2 = document.querySelectorAll('.one>span')[1].innerText;
+  console.log(content2);
+  const content3 = document.querySelector('#two').innerText;
+  console.log(content3);
+  const content4 = document.querySelector('span[user-id="4"]').innerText;
+  console.log(content4);
+}
+
+getContentElement();
