@@ -7,19 +7,24 @@ function submitForm() {
   }
   document.querySelector('.panel').innerText = input;
   document.querySelector('.input').value = '';
-
-  function inputChanged(e) {
-    if (e.code == 'Enter') {
-      submitForm();
-    }
+}
+function inputChanged(e) {
+  if (e.code == 'Enter') {
+    submitForm();
   }
 }
 
-localStorage.setItem('token', 'vnfknv');
+const obj = JSON.parse('{"a": 1}');
+console.log(obj.a);
+const str = JSON.stringify(obj);
+console.log(str);
 
-localStorage.setItem('token1', 1);
-localStorage.setItem('token1', true);
-const token1 = localStorage.getItem('token1');
-console.log(typeof token1);
-localStorage.removeItem('token1');
-localStorage.clear();
+// {
+//     "key": "string",
+//     "num": 5,
+//     "bool": false,
+//     "arr": ["s", "d"],
+//     "obj": {
+//         "innerKey": "3"
+//     }
+// }
