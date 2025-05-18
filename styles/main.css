@@ -124,7 +124,7 @@ h1 {
 
 .progress__cover-bar {
   position: absolute;
-  width: 50%;
+  transition: all 0.5s;
   height: 5px;
   border-radius: 4px;
   background: #5051f9;
@@ -187,6 +187,10 @@ input {
 input::placeholder {
   color: #8899a8;
 }
+
+input.error {
+  border: 1px solid red;
+}
 .habbit__form {
   display: flex;
   gap: 15px;
@@ -204,7 +208,7 @@ input::placeholder {
   left: 45px;
 }
 
-.button {
+.click {
   border-radius: 9px;
   background: #edecfe;
   border: none;
@@ -216,6 +220,6 @@ input::placeholder {
   cursor: pointer;
 }
 
-.button:hover {
+.click:hover {
   background: #d8d7f3;
 }
